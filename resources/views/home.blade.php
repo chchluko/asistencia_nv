@@ -11,6 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    @livewire('counter')
                     <p class="mb-0">You are logged in!</p>
                 </div>
             </div>

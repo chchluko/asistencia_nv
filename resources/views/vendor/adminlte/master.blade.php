@@ -94,7 +94,7 @@
 
     {{-- Livewire Script --}}
     @if(config('adminlte.livewire'))
-        @if(app()->version() >= 7)
+        @if(app()->version() >= 6)
             @livewireScripts
         @else
             <livewire:scripts />
