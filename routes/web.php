@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+/*Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');*/
 
 
 Route::get('/tareas', 'TaskController@index');
@@ -31,12 +31,11 @@ Route::get('adminlte/', function () {
     return view('adminlte');
 });
 
-Auth::routes();
+/*Auth::routes();
 
 Route::get('/home', function() {
     return view('home');
-})->name('home')->middleware('auth');
-
+})->name('home')->middleware('auth');*/
 
 Route::get('notes', 'NotesController@index');
 Route::get('notes/{id}/destroy', 'NotesController@destroy')->name('notes.destroy');
@@ -46,3 +45,8 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+Route::resource('emails', EmailController::class)->middleware('auth');
+Route::get('searchemail', 'EmailController@searchEmail')->name('buscarmail')->middleware('auth');
+Route::resource('trackingemails', TrackingEmailController::class)->middleware('auth');
+Route::resource('cat_emails', EmailTypeController::class)->middleware('auth');

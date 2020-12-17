@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>AdminINFRA</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -49,7 +49,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #ffffff;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -61,6 +61,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            body{
+                background:  url("{{asset('images/background.jpg')}}");
+                background-size: cover;
+                background-repeat: no-repeat;
+                }
         </style>
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
     </head>
@@ -72,19 +77,16 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
-
             <div id="app">
-                <!--div class="title m-b-md">
-                    Laravel
-                </div-->
-                <example-component></example-component><!--Añadimos nuestro componente vuejs-->
+
+                <!--example-component></example-component-->
+                <!--Añadimos nuestro componente vuejs-->
             </div>
 
         </div>
