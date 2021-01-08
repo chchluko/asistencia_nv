@@ -246,6 +246,12 @@ return [
             'url'  => 'emails',
             'icon' => 'fas fa-fw fa-at',
         ],
+        [
+            'text' => 'Tracking emails',
+            'url'  => 'trackingemails',
+            'icon' => 'fas fa-fw fa-user-secret',
+            'can'  => 'auditar',
+        ],
 
     ],
 

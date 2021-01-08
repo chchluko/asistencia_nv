@@ -50,3 +50,8 @@ Route::resource('emails', EmailController::class)->middleware('auth');
 Route::get('searchemail', 'EmailController@searchEmail')->name('buscarmail')->middleware('auth');
 Route::resource('trackingemails', TrackingEmailController::class)->middleware('auth');
 Route::resource('cat_emails', EmailTypeController::class)->middleware('auth');
+Route::get('searchtrackingemail', 'TrackingEmailController@searchTrackingEmail')->name('auditaremail')->middleware('auth');
+Route::get('reporttrackingemailbyuser/{user}', 'TrackingEmailController@reportTrackingByUser')->name('trackingreport')->middleware('auth');
+Route::get('reporttrackingemail/{email}', 'TrackingEmailController@reportTrackingEmailByEmail')->name('trackingreportemail')->middleware('auth');
+
+

@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Session;
 
 class EmailController extends Controller
 {
+    public function __construct()
+    {
+     $this->middleware('role:soporte|direccion|datacenter')->only('index');
+     $this->middleware('permission:create email')->only('create');
+     $this->middleware('permission:view password')->only('view');
+     $this->middleware('permission:edit password')->only('edit');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -94,7 +102,16 @@ class EmailController extends Controller
      */
     public function edit(Email $email)
     {
-        return view('emails.edit',compact('email'));
+        if((auth()->user()->hasPermissionTo('view password top')) && ($email->email_type_id == 1)) {
+            return view('emails.edit',compact('email'));
+        }
+        if((auth()->user()->hasPermissionTo('view password vip')) && ($email->email_type_id == 2)) {
+            return view('emails.edit',compact('email'));
+        }
+        if((auth()->user()->hasPermissionTo('view password')) && ($email->email_type_id == 3)) {
+            return view('emails.edit',compact('email'));
+        }
+        return redirect()->route('emails.index')->with('alert', "No tienes permisos para editar este registro");
     }
 
     /**

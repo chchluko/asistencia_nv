@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Email;
 use App\TrackingEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+
+use App\Exports\TrackingEmailsExport;
 use Illuminate\Support\Facades\Crypt;
+use App\Exports\TrackingEmailsUsersExport;
 
 class TrackingEmailController extends Controller
 {
@@ -15,9 +20,11 @@ class TrackingEmailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $usuario = $request->get('buscarpor');
+        $resultado = User::where('email','like',"$usuario")->paginate(5);
+        return view('trackingemails.index',compact('resultado'));
     }
 
     /**
@@ -49,14 +56,16 @@ class TrackingEmailController extends Controller
         $registro->save();
 
         if((auth()->user()->hasPermissionTo('view password top')) && ($secret->email_type_id == 1)) {
-            return redirect()->route('emails.index')->with('alert', "La contraseña solicitada es TOP: $fire");
+            return redirect()->route('emails.index')->with('alert', "La contraseña solicitada es: $fire");
         }
         if((auth()->user()->hasPermissionTo('view password vip')) && ($secret->email_type_id == 2)) {
-            return redirect()->route('emails.index')->with('alert', "La contraseña solicitada es VIP: $fire");
+            return redirect()->route('emails.index')->with('alert', "La contraseña solicitada es: $fire");
         }
         if((auth()->user()->hasPermissionTo('view password')) && ($secret->email_type_id == 3)) {
-            return redirect()->route('emails.index')->with('alert', "La contraseña solicitada es COL: $fire");
+            return redirect()->route('emails.index')->with('alert', "La contraseña solicitada es: $fire");
         }
+        $registro->accion = 'GetPassword Permisos insuficientes';
+        $registro->update();
         return redirect()->route('emails.index')->with('alert', "La contraseña solicitada es confidencial");
 
     /*
@@ -122,4 +131,32 @@ class TrackingEmailController extends Controller
     {
         //
     }
+
+    public function searchTrackingEmail(Request $request)
+    {
+        $rules = [
+            'buscarpor' => 'required',
+        ];
+        $messages = [
+            'buscarpor.required' => 'Debe llenar este campo',
+        ];
+        $this->validate($request, $rules, $messages);
+        $usuario = $request->get('buscarpor');
+        $resultado = User::where('name','like',"%$usuario%")->paginate(5);
+        if ($resultado->count() > 0) {
+           return view('trackingemails.index',compact('resultado'));
+        }
+        return redirect()->route('trackingemails.index')->with('success',"No hay resultados que coincidan");
+    }
+
+    public function reportTrackingByUser(User $user)
+    {
+        return (new TrackingEmailsUsersExport)->forUser($user->id)->download('trackingemailsbyuser.xlsx');
+    }
+
+    public function reportTrackingEmailByEmail(Email $email)
+    {
+        return (new TrackingEmailsExport)->forEmail($email->id)->download('trackingemailsbyemail.xlsx');
+    }
+
 }
