@@ -2,8 +2,9 @@
 
 return [
 
-    'full_name'                   => 'Nombre completo',
+    'full_name'                   => 'Nombre',
     'email'                       => 'Email',
+    'username'                    => 'Número de Nómina',
     'password'                    => 'Contraseña',
     'retype_password'             => 'Confirmar la contraseña',
     'remember_me'                 => 'Recordarme',

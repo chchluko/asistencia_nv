@@ -66,7 +66,7 @@ class TrackingEmailController extends Controller
         }
         $registro->accion = 'GetPassword Permisos insuficientes';
         $registro->update();
-        return redirect()->route('emails.index')->with('alert', "La contraseña solicitada es confidencial");
+        return redirect()->route('emails.index')->with('alert', "No tienes los permisos suficientes para poder visualizar esta contraseña");
 
     /*
         if ($secret->email_type_id < 3) {
