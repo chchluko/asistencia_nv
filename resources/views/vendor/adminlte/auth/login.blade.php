@@ -32,7 +32,7 @@
                            value="{{ old('username') }}" placeholder="{{ __('adminlte::adminlte.username') }}" autofocus>
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                            <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
                         </div>
                     </div>
                     @if($errors->has('username'))
@@ -60,13 +60,13 @@
 
         {{-- Login field --}}
         <div class="row">
-            <div class="col-7">
-                <div class="icheck-primary">
+            <div class="col-3">
+                <!--div class="icheck-primary">
                     <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
-                </div>
+                    <label for="remember">{{-- __('adminlte::adminlte.remember_me') --}}</label>
+                </div-->
             </div>
-            <div class="col-5">
+            <div class="col-9">
                 <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
                     <span class="fas fa-sign-in-alt"></span>
                     {{ __('adminlte::adminlte.sign_in') }}

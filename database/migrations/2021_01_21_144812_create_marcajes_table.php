@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmailTypesTable extends Migration
+class CreateMarcajesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateEmailTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('email_types', function (Blueprint $table) {
+        Schema::create('marcajes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tipo')->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('tipo');
+            $table->string('comentario',500)->nullable();
+            $table->unsignedBigInteger('flag');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateEmailTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('email_types');
+        Schema::dropIfExists('marcajes');
     }
 }

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Email;
-use App\Tracking;
+use App\Marcaje;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 
-class TrackingController extends Controller
+class MarcajeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,7 @@ class TrackingController extends Controller
      */
     public function index()
     {
-        //
+        return view('marcajes.index');
     }
 
     /**
@@ -38,27 +35,16 @@ class TrackingController extends Controller
      */
     public function store(Request $request)
     {
-        $secret = Email::findOrFail($request->id);
-        $fire = Crypt::decrypt($secret->password);
-
-        $registro = new Tracking();
-        $registro->user_id = Auth::id();
-        $registro->email_id = $request->id;
-        $registro->accion = $request->tipo;
-        $registro->motivo = $request->motivo;
-        $registro->save();
-
-        return redirect()->route('emails.index')->with('info',"La contraseña solicitada es: $fire");
-        //return view('tracking.show')->with('fire', $fire);  //Con sweet alert
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tracking  $tracking
+     * @param  \App\Marcaje  $marcaje
      * @return \Illuminate\Http\Response
      */
-    public function show(Tracking $tracking)
+    public function show(Marcaje $marcaje)
     {
         //
     }
@@ -66,10 +52,10 @@ class TrackingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tracking  $tracking
+     * @param  \App\Marcaje  $marcaje
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tracking $tracking)
+    public function edit(Marcaje $marcaje)
     {
         //
     }
@@ -78,10 +64,10 @@ class TrackingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tracking  $tracking
+     * @param  \App\Marcaje  $marcaje
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tracking $tracking)
+    public function update(Request $request, Marcaje $marcaje)
     {
         //
     }
@@ -89,10 +75,10 @@ class TrackingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tracking  $tracking
+     * @param  \App\Marcaje  $marcaje
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tracking $tracking)
+    public function destroy(Marcaje $marcaje)
     {
         //
     }

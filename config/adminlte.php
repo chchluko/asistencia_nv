@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Infraestructura',
+    'title' => 'Asistencia',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>CEA</b>DIN',
+    'logo' => '<b>Asistencia</b>PROA',
     'logo_img' => 'images/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminINFRA',
+    'logo_img_alt' => 'AsistenciaPROA',
 
     /*
     |--------------------------------------------------------------------------
@@ -194,11 +194,11 @@ return [
 
     'login_url' => 'login',
 
-    'register_url' => 'register',
+    'register_url' => false, //'register'
 
-    'password_reset_url' => 'password/reset',
+    'password_reset_url' => false, //'password/reset'
 
-    'password_email_url' => 'password/email',
+    'password_email_url' => false, //'password/email'
 
     'profile_url' => false,
 
@@ -242,15 +242,16 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Correos',
-            'url'  => 'emails',
-            'icon' => 'fas fa-fw fa-at',
+            'text' => 'Checar',
+            'url'  => 'checar',
+            'icon' => 'fas fa-fw fa-fingerprint',
+            'can'  => 'Checar',
         ],
         [
-            'text' => 'Tracking emails',
-            'url'  => 'trackingemails',
+            'text' => 'Justificar',
+            'url'  => 'justificar',
             'icon' => 'fas fa-fw fa-user-secret',
-            'can'  => 'auditar',
+            'can'  => 'Justificar',
         ],
 
     ],
@@ -311,7 +312,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -340,7 +341,7 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],

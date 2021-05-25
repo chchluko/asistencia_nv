@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>AdminINFRA</title>
+        <title>Asistencia</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -49,7 +49,7 @@
             }
 
             .links > a {
-                color: #ffffff;
+                color: #0069D9;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -72,19 +72,30 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <!--div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Inicio</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Acceso</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Registro</a>
+                            <!--a href="{{-- route('register') --}}">Registro</a-->
                         @endif
                     @endauth
-                </div>
+                </div-->
             @endif
             <div id="app">
-
+                   @if (Route::has('login'))
+                   <div class="links">
+                       @auth
+                       <a href="{{ url('/home') }}"><h1>Inicio<h1></a>
+                       @else
+                       <a href="{{ route('login') }}"><h1>Ingresar<h1></a>
+                           @if (Route::has('register'))
+                               <!--a href="{{-- route('register') --}}">Registro</a-->
+                           @endif
+                       @endauth
+                   </div>
+               @endif
                 <!--example-component></example-component-->
                 <!--Añadimos nuestro componente vuejs-->
             </div>

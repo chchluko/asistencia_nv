@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\EmailType;
+use App\Receipt;
 use Illuminate\Http\Request;
 
-class EmailTypeController extends Controller
+class ReceiptController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class EmailTypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('receipts.index');
     }
 
     /**
@@ -41,10 +41,10 @@ class EmailTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\EmailType  $emailType
+     * @param  \App\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function show(EmailType $emailType)
+    public function show(Receipt $receipt)
     {
         //
     }
@@ -52,10 +52,10 @@ class EmailTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\EmailType  $emailType
+     * @param  \App\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function edit(EmailType $emailType)
+    public function edit(Receipt $receipt)
     {
         //
     }
@@ -64,10 +64,10 @@ class EmailTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\EmailType  $emailType
+     * @param  \App\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EmailType $emailType)
+    public function update(Request $request, Receipt $receipt)
     {
         //
     }
@@ -75,10 +75,10 @@ class EmailTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\EmailType  $emailType
+     * @param  \App\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EmailType $emailType)
+    public function destroy(Receipt $receipt)
     {
         //
     }

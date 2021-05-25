@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrackingEmailsTable extends Migration
+class CreateReceiptsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateTrackingEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tracking_emails', function (Blueprint $table) {
+        Schema::create('receipts', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->string('accion');
-            $table->text('motivo');
-
-            $table->unsignedBigInteger('email_id');
-//            $table->foreign('email_id')->references('id')->on('emails');
             $table->unsignedBigInteger('user_id');
-//           $table->foreign('user_id')->references('id')->on('users');
-
+            $table->unsignedBigInteger('tipo');
+            $table->string('comentario',500)->nullable();
+            $table->unsignedBigInteger('nomina');
+            $table->date('finicio');
+            $table->date('ffin');
+            $table->unsignedBigInteger('flag');
             $table->timestamps();
         });
     }
@@ -35,6 +33,6 @@ class CreateTrackingEmailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tracking_emails');
+        Schema::dropIfExists('receipts');
     }
 }
