@@ -237,6 +237,22 @@ return [
             'topnav' => true,
         ],
         [
+            'text' => 'Usuarios',
+            'url'  => 'users',
+            'icon' => 'fas fa-fw fa-user',
+            'topnav' => true,
+            'can'  => 'Administrar',
+            'active' => ['users*'],
+        ],
+        [
+            'text' => 'Roles',
+            'url'  => 'roles',
+            'icon' => 'fas fa-fw fa-user-tag',
+            'topnav' => true,
+            'can'  => 'Administrar',
+            'active' => ['roles*'],
+        ],
+        [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',

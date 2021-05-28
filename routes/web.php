@@ -48,3 +48,6 @@ Route::get('/home', function() {
 
 Route::resource('justificar', 'ReceiptController');
 Route::resource('checar', 'MarcajeController');
+
+Route::name('admin')->resource('roles', Admin\RoleController::class)->names('roles');
+Route::name('admin')->resource('users', Admin\UserController::class)->only('index','edit','update')->names('users');
