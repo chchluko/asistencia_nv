@@ -1,7 +1,7 @@
 <div>
     <div class="card card-primary">
         <div class="card-header">
-            <input wire:keydown='limpiar_page' wire:model="search" type="text" class="form-control w-100" placeholder="Escriba un Nombre...">
+            <input wire:model="search" type="text" class="form-control w-100" placeholder="Escriba un Nombre...">
         </div>
         @if ($users->count())
         <div class="card-body">

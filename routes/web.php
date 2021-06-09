@@ -46,8 +46,8 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::resource('justificar', 'ReceiptController');
-Route::resource('checar', 'MarcajeController');
+Route::resource('justificar', 'ReceiptController')->middleware('auth');
+Route::resource('checar', 'MarcajeController')->middleware('auth');
 
 Route::name('admin')->resource('roles', Admin\RoleController::class)->names('roles');
 Route::name('admin')->resource('users', Admin\UserController::class)->only('index','edit','update')->names('users');
