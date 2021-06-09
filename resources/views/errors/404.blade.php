@@ -13,6 +13,8 @@
             La petición no regreso una pagina conocida.
           </p>
 
+<a href="{{ route('home') }}" class="btn btn-default"><i class="fas fa-home"></i> Ir a la pagina de inicio</a>
+
         </div>
       </div>
       <!-- /.error-page -->
