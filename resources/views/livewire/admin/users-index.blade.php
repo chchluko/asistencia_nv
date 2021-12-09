@@ -12,6 +12,7 @@
                         <th>Nombre Completo</th>
                         <th>Número de Nómina</th>
                         <th></th>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,8 +21,11 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td width="10px">
-                            <a href="{{ route('admin.users.edit',$user) }}" class="btn btn-primary">Editar</a>
+                        <td><a href="{{ route('admin.users.edit',$user) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+                        <td>
+                            {!!Form::open(['route'=> ['admin.users.destroy',$user ],'method'=>'DELETE'])!!}
+                                {!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
+                            {!!Form::close()!!}
                         </td>
                     </tr>
                     @endforeach

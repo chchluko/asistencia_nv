@@ -50,4 +50,4 @@ Route::resource('justificar', 'ReceiptController')->middleware('auth');
 Route::resource('checar', 'MarcajeController')->middleware('auth');
 
 Route::name('admin')->resource('roles', Admin\RoleController::class)->names('roles');
-Route::name('admin')->resource('users', Admin\UserController::class)->only('index','edit','update')->names('users');
+Route::name('admin')->resource('users', Admin\UserController::class)->only('index','edit','update','destroy')->names('users');

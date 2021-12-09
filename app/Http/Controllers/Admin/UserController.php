@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:Administrar')->only('index','edit', 'update');
+        $this->middleware('can:Administrar')->only('index','edit', 'update', 'destroy');
     }
 
     /**
@@ -37,4 +37,9 @@ class UserController extends Controller
         return redirect()->route('admin.users.edit', $user);
     }
 
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('admin.users.index');
+    }
 }

@@ -9,9 +9,8 @@
             <thead>
               <tr>
                 <th>Tipo</th>
-                <th>Comentario</th>
                 <th>Hora</th>
-                <th>Sincronizada a TimeBlock</th>
+                <th>Sincronizada a TB</th>
               </tr>
             </thead>
             <tbody>
@@ -22,7 +21,6 @@
                     @elseif($item->tipo == 2)
                         Salida
                     @endif</td>
-                    <td>{{ $item->comentario }}</td>
                     <td>{{ Carbon\Carbon::parse($item->updated_at)->format('H:i:s') }}</td>
                     <td>@if ($item->flag == 0)
                         Aun no Sincronizada
@@ -39,7 +37,7 @@
           </table>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer clearfix">
+    <div class="clearfix card-footer">
         @include('livewire.marcajes.create')
     </div>
   </div>
