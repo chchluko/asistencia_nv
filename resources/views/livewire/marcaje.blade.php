@@ -38,6 +38,10 @@
     </div>
     <!-- /.card-body -->
     <div class="clearfix card-footer">
+        @if(in_array(auth()->user()->username, ['6861']))
+            <p>La asistencia remota ha sido deshabilitada</p>
+        @else
         @include('livewire.marcajes.create')
+        @endif
     </div>
   </div>
